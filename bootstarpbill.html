@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://unpkg.com/vue"></script> 
+    <style>
+      
+      @media print
+  {    
+      .no-print, .no-print *
+      {
+          display: none !important;
+      }
+  }
+  </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+<div id="app">
+<div class="container">
+  <div class="no-print">
+    <div class="border">
+        <div class="p-4">
+            <p class="lead text-left">Patient Detail  </p>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputEmail4">Name</label>
+                <input type="text" v-model="pname" class="form-control" id="inputEmail4" >
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputEmail4">Age</label>
+                <input type="text"v-model="page" class="form-control" id="inputEmail4" >
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputPassword4">Gender</label>
+                <input type="text" v-model="psex" class="form-control" id="inputPassword4" >
+              </div>
+            
+              <div class="form-group col-md-2">
+                <label for="inputPassword4">Date</label>
+                <input type="text"v-model="pdate" class="form-control" id="inputPassword4" >
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputPassword4">Referred By</label>
+                <input type="text" v-model="pry" class="form-control" id="inputPassword4" >
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputPassword4">Bill Id</label>
+                <input type="text"v-model="id" class="form-control" id="inputPassword4" >
+              </div>
+
+            </div>
+            <p class="lead text-left">Patient's Particulars </p>
+          
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Particular Name</label>
+                <input type="text" class="form-control" v-model="name" id="inputCity">
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="inputCity">Price</label>
+                <input type="text" class="form-control" v-model="price" id="inputCity">
+              </div>
+             
+              <div class="form-group col-md-2">
+                <label for="inputZip">Total Discount on Bill</label>
+                <input type="text"v-on:keyup="AmountTotal"  v-model="dis" class="form-control" id="inputZip">
+              </div>
+            </div>
+           
+            <button  v-on:click="addItem()" class="btn btn-primary">Add Particular</button>
+          </div>
+          
+            
+          
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4 my-2"v-for="(item,index) in rowData" >
+                  <button v-on:click="removeEl(index)" class="btn btn-danger">Delete {{item.name}} Particulat at {{index+1}} Position</li>
+
+                </div>
+
+              </div>
+            </div>
+          
+    </div>
+  </div>
+</div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+      <div class="row w-50 border mx-auto" >
+        <div class="col-md-12 p-2 pr-0 " >
+          <h1  text-align:center class="display-6 p-0">&nbsp;<img src="x-ray.png" width="55" height="55" />&nbsp; Aakansha Digital X-Ray&Clinic</h1>
+          <h5 class="text-center p-0">9,Shastri Nagar Near Sai Mandir Ratlam (M.P.) Mob:9926057320,7000083862<br>Timing-9:00AM To 9:00PM</h5>
+        </div>
+      </div>
+      <div class="row w-50 border-bottom border-right border-left mx-auto p-2" >
+          
+          <div class="col-md-4">
+            <p>Name:{{pname}}</p>
+
+          </div>
+          <div class="col-md-2 ">
+            <p>Age:{{page}}</p>
+        </div>
+        <div class="col-md-6">
+            <p>Referred By:{{pry}}</p>   
+        </div>
+        <div class="col-md-4">
+            <p>Gender:{{psex}}</p>
+
+          </div>
+          <div class="col-md-4">
+            <p>Date:{{pdate}}</p>
+
+          </div>
+          <div class="col-md-4">
+            <p>Bill Id:{{id}}</p>
+
+          </div>
+    </div> 
+    
+    <div class="row w-50 border-bottom border-right border-left mx-auto p-2" >
+        
+            <div class="col-md-12">
+                <h4 class="text-center">Bill</h4>
+    
+           
+        </div>
+        
+    </div>
+
+    <div class="row w-50 border-bottom border-right border-left mx-auto p-1" >
+        
+        <div class="col-md-2 ">
+            <h4 class="text-left">SNo</h4>
+        </div>
+        <div class="col-md-6 ">
+            <h4 class="text-left">Particular</h4>
+        </div><div class="col-md-4">
+            <h4 class="text-right">Price</h4>
+        </div>
+</div>
+<div  v-for="(item,index) in rowData">
+
+
+  <div class="row w-50 border-bottom border-right border-left mx-auto p-0" >
+        
+    <div class="col-md-2 ">
+        <p class="text-left">{{index+1}}</p>
+    </div>
+    <div class="col-md-6 ">
+        <p class="text-left">{{item.name}}</p>
+    </div><div class="col-md-4">
+        <p class="text-right">{{item.price}}</p>
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="row w-50 border-bottom border-right border-left mx-auto p-0" >
+        
+    <div class="col-md-8 ">
+        <p class="text-right"></p>
+    </div>
+    <div class="col-md-4">
+        <h5 class="text-right">Discount- {{dis}}/-</h5>
+
+        <h5 class="text-right">Total- {{sum}}/-</h5>
+    </div>
+</div>
+
+ 
+</div>
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="bootstarpbill.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
