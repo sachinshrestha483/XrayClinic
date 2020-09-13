@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://unpkg.com/vue"></script> 
     <style>
-      
+     @media print
+        {
+            .col-xs-12
+            {
+                width:50%;
+                float:left;
+            }
+        }
+          
+    
       @media print
   {    
       .no-print, .no-print *
@@ -102,8 +111,7 @@
 
       <div class="row w-50 border mx-auto" >
         <div class="col-md-12 p-2 pr-0 " >
-          <h1  text-align:center class="display-6 p-0">&nbsp;<img src="x-ray.png" width="55" height="55" />&nbsp; Aakansha Digital X-Ray&Clinic</h1>
-          <h5 class="text-center p-0">9,Shastri Nagar Near Sai Mandir Ratlam (M.P.) Mob:9926057320,7000083862<br>Timing-9:00AM To 9:00PM</h5>
+          <img src="header.png" class="img-fluid" alt="Responsive image">
         </div>
       </div>
       <div class="row w-50 border-bottom border-right border-left mx-auto p-2" >
@@ -187,7 +195,75 @@
     </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
  
+<div class="container">
+  <h4 class="text-center">Bill  Copy</h4>
+   <div class="row w-50 border-bottom border-right border-left mx-auto p-2" >
+          
+    <div class="col-md-4">
+      <p>Name:{{pname}}</p>
+
+    </div>
+    <div class="col-md-2 ">
+      <p>Age:{{page}}</p>
+  </div>
+  <div class="col-md-6">
+      <p>Referred By:{{pry}}</p>   
+  </div>
+  <div class="col-md-4">
+      <p>Gender:{{psex}}</p>
+
+    </div>
+    <div class="col-md-4">
+      <p>Date:{{pdate}}</p>
+
+    </div>
+    <div class="col-md-4">
+      <p>Bill Id:{{id}}</p>
+
+    </div>
+</div> 
+   <div  v-for="(item,index) in rowData">
+
+
+    <div class="row w-50  mx-auto p-0" >
+          
+      <div class="col-md-2 ">
+          <p class="text-left">{{index+1}}</p>
+      </div>
+      <div class="col-md-6 ">
+          <p class="text-left">{{item.name}}</p>
+      </div><div class="col-md-4">
+          <p class="text-right">{{item.price}}</p>
+      </div>
+  </div>
+  
+  
+  </div>
+
+  <div class="row w-50  mx-auto p-0" >
+          
+    <div class="col-md-8 ">
+        <p class="text-right"></p>
+    </div>
+    <div class="col-md-4 border-top">
+        <h5 class="text-right">Discount- {{dis}}/-</h5>
+
+        <h5 class="text-right">Total- {{sum}}/-</h5>
+    </div>
+</div>
+ <br>
+
+</div>
+
+
 </div>
 
    <br>
